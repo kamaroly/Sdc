@@ -1,18 +1,18 @@
 {
-    "name": ":vendor/:package_name",
+    "name": "kamaro/sdc",
     "type": "library",
     "description": ":package_description",
     "keywords": [
-        ":vendor",
-        ":package_name"
+        "kamaro",
+        "sdc"
     ],
-    "homepage": "https://github.com/:vendor/:package_name",
+    "homepage": "https://github.com/kamaroly/sdc",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": ":author_website",
+            "name": "Kamaro Lambert",
+            "email": "kamaroly@gmail.com",
+            "homepage": "https://medium.com/@kamaroly",
             "role": "Developer"
         }
     ],
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            ":vendor\\:package_name\\": "src"
+            "kamaro\\sdc\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            ":vendor\\:package_name\\": "tests"
+            "kamaro\\sdc\\": "tests"
         }
     },
     "scripts": {
