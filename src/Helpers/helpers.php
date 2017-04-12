@@ -1,5 +1,16 @@
 <?php 
 
+if (!function_exists('dd')) {
+	function dd($string){
+		die(var_dump($string));
+	}
+}
+
+if (!function_exists('strContains')) {
+	function strContains($string,$substr){
+		return strpos( $string,$substr) !== false;
+	}
+}
 
 if (!function_exists('getHtmlTable')) {
 	/**

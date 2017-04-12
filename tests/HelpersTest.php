@@ -4,7 +4,10 @@
 class HelpersTest extends \PHPUnit_Framework_TestCase
 {
 
-
+	public function testStringContains()
+	{
+		$this->assertTrue(strContains('Angel Keza Kamaro','Keza'));
+	}
     /**
      * Test Hex To string
      * @param  string $value

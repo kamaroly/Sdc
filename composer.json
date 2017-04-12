@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "kamaro\\sdc\\": "src"
+            "Kamaro\\Sdc\\": "src"
         },
         "files": [
             "src/Helpers/helpers.php"
@@ -33,7 +33,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "kamaro\\sdc\\": "tests"
+            "Kamaro\\Sdc\\": "tests"
         }
     },
     "scripts": {
