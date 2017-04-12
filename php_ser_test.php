@@ -98,7 +98,7 @@ function hexdecs($hex)
      * @author Kamaro Lambert
      * @method to open a port
      */
-  function _open_port($port = 'COM7')
+  function _open_port($port = 'COM5')
   {
     
     if(substr($port, 3)>9)
@@ -117,6 +117,31 @@ function hexdecs($hex)
    //Check if the port is open 
    return ser_isopen();
   }
+  /**
+   * method to get the sdc_id
+   * @return [type] [description]
+   */
+  function request_sign()
+  {
+      ser_close();
+      _open_port();
+      error_reporting(E_ERROR);
+      $string_dig="01 26 23 C8 38 05 30 30 30 31 38 31 03";
+      $string_array_dig=explode(' ',$string_dig);
+       $bytes_dig=" ";        
+       foreach ($string_array_dig as $string_hex_dig=>$value_dig)
+       {
+         ser_writebyte(" ".hexdecs($value_dig)."\r\n");
+       }
+
+     sleep(1);
+     
+     //Send request to the SDC asking the response 
+     $string = ser_read();
+     ser_close();
+     return substr($string, strpos($string,'SDC'), 12);    
+  }
+
  /**
    * @method to get the get_sdc_status
    * @return [type] [description]
@@ -136,8 +161,8 @@ function hexdecs($hex)
        }
        sleep(1);
      //Send request to the SDC asking the response 
-    $str = ser_read();
-
+      $str = ser_read();
+      ser_close();
       $returned_data=implode(" ", strToHex($str));
       
       $returned_data=_get_string_between($returned_data,"E7","04");
@@ -182,6 +207,8 @@ function hexdecs($hex)
   }
 
   echo "<strong>SDC ID:</strong>".get_sdc_id();
+  echo "<h4>REQUEST SIGNATURE</H4>";
+  echo request_sign();
   echo "<h3>DETAILS:</h3>";
   echo build_table(get_sdc_status());
   echo "<br/>";
