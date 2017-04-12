@@ -7,75 +7,75 @@ interface SerialPortInterface{
    * Open Serial Port
    * @return  bool
    */
-  public static function open();
+  public function open();
 
   /**
    * Close Serial Port
    * @return  null
    */
-  public static function close();
+  public function close();
 
   /**
    * Write to serial port
    * @param   $string 
    * @return  mixed
    */
-  public static function write($string);
+  public function write($string);
 
   /**
    * Read from from port
    * @return  
    */
-  public static function read();
+  public function read();
   
   /**
    * Check if serial port is open
    * @return  
    */
-  public static function isopen();
+  public function isopen();
 
   /**
    * Write bytes to the port
    * @param   $string 
    * @return  mixed
    */
-  public static function writebyte($string);
+  public function writeByte($string);
 
   /**
    * Read bytes from bort
    * @return  
    */
-  public static function readbyte();
+  public function readByte();
 
   /**
    * Count Bytes written to port
    * @return  
    */
-  public static function inputcount();
+  public function inputCount();
 
   /**
    * Refresh buffer
    * @return  
    */
-  public static function flush();
+  public function flush();
 
   /**
    * Set RTS on Devise
    * @return  
    */
-  public static function setRTS($RTS);
+  public function setRTS($RTS);
 
   /**
    * Set DTR
    * @return  
    */
-  public static function setDTR($DTR);
+  public function setDTR($DTR);
 
   /**
    * Set Break on device
    * @return  
    */
-  public static function setBreak();
+  public function setBreak();
 
   /**
    * List available ports

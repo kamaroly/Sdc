@@ -2,32 +2,38 @@
 namespace  Kamaro\Sdc\Devices;
 
 class SerialPortManager implements SerialPortInterface{
- 
+ 	
   /**
    * Open Serial Port
-   * @return  bool
+   * @param  string $port         
+   * @param  string $licenseOwner 
+   * @param  string $licenseKey   
+   * @return 
    */
-  public static function open($port = "COM5",$licenseOwner = "KAMARO LAMBERT #1",$licenseKey = "-546625902"){
+  public function open($port = "COM5",$licenseOwner = "KAMARO LAMBERT #1",$licenseKey = "-546625902"){
 
     // Fix a windows bug where by if port has two digit
     // It has to be prefixed by 4 slahes \\\\\
     if(substr($port, 3)>9){
       $port="\\\\.\\$port";
     }
+
     ser_register($licenseOwner,$licenseKey);
     //Opening Port...
     ser_open($port, 9600, 8, "None", 1, "None");
+
     // Clears input and/or output buffers.
     ser_flush(true,true);
-   //Check if the port is open 
-   return ser_isopen();
+
+    //Check if the port is open 
+    return ser_isopen();
   }
 
   /**
    * Close Serial Port
    * @return  null
    */
-  public static function close(){
+  public function close(){
   	return  ser_close();
   }
 
@@ -35,7 +41,7 @@ class SerialPortManager implements SerialPortInterface{
    * Write to serial port
    * @return  
    */
-  public static function write($string){
+  public function write($string){
   	return ser_write($string);
   }
 
@@ -43,7 +49,7 @@ class SerialPortManager implements SerialPortInterface{
    * Read from from port
    * @return  
    */
-  public static function read(){
+  public function read(){
   	return ser_read();
   }
   
@@ -51,7 +57,7 @@ class SerialPortManager implements SerialPortInterface{
    * Check if serial port is open
    * @return  
    */
-  public static function isopen(){
+  public function isopen(){
   	return ser_isopen();
   }
 
@@ -59,7 +65,7 @@ class SerialPortManager implements SerialPortInterface{
    * Write bytes to the port
    * @return 
    */
-  public static function writebyte($byte){
+  public function writeByte($byte){
   	return ser_writebyte($byte);
   }
 
@@ -67,7 +73,7 @@ class SerialPortManager implements SerialPortInterface{
    * Read bytes from bort
    * @return  
    */
-  public static function readbyte(){
+  public function readbyte(){
   	return ser_readbyte();
   }
 
@@ -75,7 +81,7 @@ class SerialPortManager implements SerialPortInterface{
    * Count Bytes written to port
    * @return  
    */
-  public static function inputcount(){
+  public function inputcount(){
   	return ser_inputcount();
   }
 
@@ -83,7 +89,7 @@ class SerialPortManager implements SerialPortInterface{
    * Refresh buffer
    * @return  
    */
-  public static function flush(){
+  public function flush(){
   	return ser_flush(true,true);
   }
 
@@ -91,7 +97,7 @@ class SerialPortManager implements SerialPortInterface{
    * Set RTS on Devise
    * @return  
    */
-  public static function setRTS($rts){
+  public function setRTS($rts){
   	return ser_setRTS($rts);
   }
 
@@ -99,7 +105,7 @@ class SerialPortManager implements SerialPortInterface{
    * Set DTR
    * @return  
    */
-  public static function setDTR($dtr){
+  public function setDTR($dtr){
   	return ser_setDTR($dtr);
   }
 
@@ -107,7 +113,7 @@ class SerialPortManager implements SerialPortInterface{
    * Set Break on device
    * @return  
    */
-  public static function setBreak(){
+  public function setBreak(){
   	return ser_setBreak();
   }
 
@@ -116,32 +122,24 @@ class SerialPortManager implements SerialPortInterface{
    * @return  array | mixed
    */
   public static function getPorts(){
-	 $comm         = shell_exec('mode'); 
-	 $comm_list[0] = 'None'; 
-     
-    if(substr_count($comm,'COM') < 1) { 
-       return  $comm_list;
-    } 
-
-    $conn = explode(' ',$comm); 
-    $count = count($conn); 
-
-    for($i=0;$i<$count;$i++) { 
-
-    	// If this port is not COM then go to next 
-        if(substr_count($conn[$i],'COM')<1) { 
-            $comm_list[$i] = ''; 
-            continue;
+        $comm = shell_exec('mode'); 
+        if(substr_count($comm,'COM')<1) { 
+            $comm_list[0] = 'None'; 
+        } else { 
+            $conn = explode(' ',$comm); 
+            $count = count($conn); 
+            for($i=0;$i<$count;$i++) { 
+                if(substr_count($conn[$i],'COM')<1) { 
+                    $comm_list[$i] = ''; 
+                } else { 
+                    $comm_list[$i] = str_replace(':','',substr($conn[$i],0,5)).'-'; 
+                } 
+            } 
         } 
-
-        $comm_list[$i] = str_replace(':','',substr($conn[$i],0,5)).'-'; 
-    } 
-
-    // Clean Data and response
-    $comm = implode('',$comm_list); 
-    $comm = trim($comm); 
-    $comm = trim(str_replace('-',' ',$comm)); 
-    $comm_list = explode(' ',$comm); 
-    return $comm_list; 
+        $comm = implode('',$comm_list); 
+        $comm = trim($comm); 
+        $comm = trim(str_replace('-',' ',$comm)); 
+        $comm_list = explode(' ',$comm); 
+        return $comm_list ; 
   }
 }

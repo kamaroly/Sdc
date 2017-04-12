@@ -6,10 +6,40 @@ if (!function_exists('dd')) {
 	}
 }
 
+
 if (!function_exists('strContains')) {
 	function strContains($string,$substr){
 		return strpos( $string,$substr) !== false;
 	}
+}
+
+
+if (!function_exists('getPorts')) {
+	/**
+	 * function to return the available com port
+	 * @return arrays comm_list
+	 */
+	function getPorts() { 
+        $comm = shell_exec('mode'); 
+        if(substr_count($comm,'COM')<1) { 
+            $comm_list[0] = 'None'; 
+        } else { 
+            $conn = explode(' ',$comm); 
+            $count = count($conn); 
+            for($i=0;$i<$count;$i++) { 
+                if(substr_count($conn[$i],'COM')<1) { 
+                    $comm_list[$i] = ''; 
+                } else { 
+                    $comm_list[$i] = str_replace(':','',substr($conn[$i],0,5)).'-'; 
+                } 
+            } 
+        } 
+        $comm = implode('',$comm_list); 
+        $comm = trim($comm); 
+        $comm = trim(str_replace('-',' ',$comm)); 
+        $comm_list = explode(' ',$comm); 
+        return $comm_list ; 
+    } 
 }
 
 if (!function_exists('getHtmlTable')) {

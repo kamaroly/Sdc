@@ -15,11 +15,11 @@
           $html .= '<tr>';
             $html .= '<th>' . htmlspecialchars($key) . '</th>';
             $html .= '<td>' . htmlspecialchars($value) . '</td>';
-          $html .= '</tr>';
+          $html .= '</tr> \r\n';
         }
     // finish table and return it
 
-    $html .= '</table>';
+    $html .= '</table> \r\n';
     return $html;
 }
 
@@ -179,32 +179,7 @@ function hexdecs($hex)
       return $data;   
   }
 
-    /**
-   * method to get the sdc_id
-   * @return [type] [description]
-   */
-  function get_sdc_id()
-  {
-      ser_close();
-      _open_port();
-  	  error_reporting(E_ERROR);
-      $string_dig="01 24 20 E5 05 30 31 32 3E 03";
-   
-      $string_array_dig=explode(' ',$string_dig);
-      
-       $bytes_dig=" ";        
-       foreach ($string_array_dig as $string_hex_dig=>$value_dig)
-       {
-         ser_writebyte(" ".hexdecs($value_dig)."\r\n");
-       }
 
-     sleep(1);
-     
-     //Send request to the SDC asking the response 
-     $string = ser_read();
-     ser_close();
-     return substr($string, strpos($string,'SDC'), 12);    
-  }
 
   echo "<strong>SDC ID:</strong>".get_sdc_id();
   echo "<h4>REQUEST SIGNATURE</H4>";
@@ -238,14 +213,14 @@ function _avalable_comport_list()
         $comm = trim($comm); 
         $comm = trim(str_replace('-',' ',$comm)); 
         $comm_list = explode(' ',$comm); 
-      return $comm_list ; 
+        return $comm_list ; 
     } 
 
 $ports = _avalable_comport_list();
 
-echo "<strong>Ports</strong> <br/>";
+echo "<strong>Ports</strong> <br/> \r\n";
 foreach ($ports as $key => $value) {
-	echo "$value <br/>";
+	echo "$value <br/> \r\n";
 }
 
 
@@ -264,7 +239,7 @@ if (extension_loaded($module)) {
 $functions = get_extension_funcs($module);
 echo "Functions available in the $module extension:<br>\n";
 foreach($functions as $func) {
-    echo $func."<br>";
+    echo $func."<br> \r\n";
 }
 echo "<br>";
 

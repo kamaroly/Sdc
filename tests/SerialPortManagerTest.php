@@ -3,31 +3,31 @@
 namespace Kamaro\Sdc;
 use Kamaro\Sdc\Devices\SerialPortManager;
 
-class SerialPortManagerTest extends \PHPUnit_Framework_TestCase
-{
-  /** @test if available com ports */
-  public function testGetPorts()
+class SerialPortManagerTest extends \PHPUnit_Framework_TestCase{
+
+  protected  $ports;
+  protected  $device;
+  public function setUp()
   {
-  	$ports = SerialPortManager::getPorts(); 	
-  	$this->assertTrue(strContains($ports[0],'COM'));
+    $this->device = new SerialPortManager;
+    $this->ports  = getPorts();
   }
 
   /** @test if we can open a port */
   public function testSerOpen(){
-  	$ports    = SerialPortManager::getPorts(); 
-    $openPort = SerialPortManager::open($ports[0]);
+    $openPort = $this->device->open();
     $this->assertTrue($openPort);
   }
 
   /** @test if we can close a port */
   public function testSerClose(){
-	$close = SerialPortManager::close();
+	$close = $this->device->close();
     $this->assertTrue($close === 0);
   }
 
   /** @testWrite */
   public function testSerWrite(){
-  	$write = SerialPortManager::write('01');
+  	$write = $this->device->write('01');
     $this->assertTrue($write === 0);
   }
 }
