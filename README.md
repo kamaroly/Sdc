@@ -64,16 +64,25 @@ composer require Kamaro/Sdc
 
 ## Usage
 
+#### Register php serial extension.
+Each time you are opening the port, You are required to register it with your license from the vendor 
+or the Serial Port.
+``` php
+<?php
+$device = new Kamaro\Sdc\SDCController('COM5','KAMARO LAMBERT #1','12345123'); // Assume your SDC is connect to COM Port 5
+echo $device->isOpen(); // true
+```
+
 #### Get SDC id
 ``` php
 <?php
-$device = new SDCController('COM5'); // Assume your SDC is connect to COM Port 5
+$device = new Kamaro\Sdc\SDCController('COM5'); // Assume your SDC is connect to COM Port 5
 echo $device->getID(); // SDC002001531 equivalent to the connected SDC
 ```
 #### Get SDC status
 ``` php
 <?php
-$device = new SDCController('COM5');
+$device = new Kamaro\Sdc\SDCController('COM5');
 print_r($device->getStatus());
 
 ```
@@ -125,7 +134,7 @@ NS01012345,100600570,11/05/2016 12:35:20,23,0.00,18.00,0.00,0.00,11.00,12.00,0.0
 $data = "NS01012345,100600570,14/04/2017 12:35:20,23,0.00,18.00,0.00,0.00,11.00,12.00,0.00,0.00,0.00,1.83,0.00,0.00";
 
 // Get Device Instance on PORT 5
-$device = new SDCController('COM5');
+$device = new Kamaro\Sdc\SDCController('COM5');
 echo $device->sendReceiptData($data); // P for success or ERROR
 ```
 
@@ -136,7 +145,7 @@ You have to pass invoice Number as parameter
 ``` php
 <?php
 // Get Device Instance on PORT 5
-$device = new SDCController('COM5');
+$device = new Kamaro\Sdc\SDCController('COM5');
 $results = $device->getSignature(23); // Previous Sent Invoice Number 23
 
 var_dump($results);
@@ -217,7 +226,7 @@ E         WE APPRECIATE YOUR BUSINESS
 
 	$sequence = 32;
 
-	$device = new SDCController('COM5');
+	$device = new Kamaro\Sdc\SDCController('COM5');
 
 	foreach ($lines as $key => $line) {
 	    // Update sequence
