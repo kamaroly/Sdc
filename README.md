@@ -18,14 +18,48 @@ src/
 tests/
 vendor/
 ```
+# Installation
+
+- [Installation](#installation)
+    - [Server Requirements](#server-requirements)
+    - [Installing KAMARO SDC](#installing-sdc)
+    - [Configuration](#configuration)
+- [Web Server Configuration](#web-server-configuration)
+    - [Pretty URLs](#pretty-urls)
+
+<a name="installation"></a>
+## Installation
 
 
-## Install
+<a name="server-requirements"></a>
+### Server Requirements
 
-Via Composer
+KAMARO SDC has a few system requirements. Of course, most of these requirements are satisfied by the [Laragon](https://laragon.org/), so it's highly recommended that you use Laragon as your local Laravel development environment.
+
+However, if you are not using Laragon, you will need to make sure your server meets the following requirements:
+
+* PHP >= 7.1.0
+* OpenSSL PHP Extension
+* Mbstring PHP Extension
+* Windows 10
+* [Php Serial extension for windows](https://secure.shareit.com/shareit/checkout.html?PRODUCT[300063750]=1)
+
+<a name="installing-sdc"></a>
+### Installing KAMARO SDC
+
+KAMARO utilizes [Composer](https://getcomposer.org) to manage its dependencies. So, before using this package, make sure you have Composer installed on your machine.
+
+#### Via Composer Create-Project
+
+Alternatively, you may also install Laravel by issuing the Composer `create-project` command in your terminal:
+``` bash
+    composer create-project kamaro/sdc your_project_name_here  dev-master  
+```
+
+## Install in existing project
 
 ``` bash
-$ composer require Kamaro/Sdc
+composer require Kamaro/Sdc
 ```
 
 ## Usage
