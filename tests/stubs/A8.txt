@@ -1,0 +1,40 @@
+                   company                      
+                   address                      
+                     TIN                        
+                     COPY                        
+-------------------------------------------------
+                   Normal Sale                       
+-------------------------------------------------
+             Welcome to our shop                
+          REFUND IS APPROVED ONLY FOr           
+             ORIGINAL SALES RECEIPT             
+                   Client ID                    
+------------------------------------------------
+Plain Bread            1000.00x 1.00 1000.00A-EX
+Wriggly gum                  60.00x 5.00 300.00B
+------------------------------------------------
+        THIS IS NOT AN OFFICIAL RECEIPT         
+------------------------------------------------
+TOTAL                                  -36139.50
+TOTAL                         B-18.00% -36139.50
+TOTAL                             TAX B -5512.81
+TOTAL                               TAX -5512.81
+------------------------------------------------
+CASH                                   -36139.50
+ITEMS NUMBER                                   1
+------------------------------------------------
+              SDC INFORMATION                  
+Date: 25/5/2012                  Time: 11:48:27
+SDC ID:                            SDC001000001
+RECEIPT NUMBER:                       12/259 NR
+               Internal Data:                  
+        IR84-99TN-FCYY-CE22-4HWE-V5TA-EE       
+             Receipt Signature:                
+            669X-TBMM-GPE4-445D                
+-----------------------------------------------
+RECEIPT NUMBER:                             153
+DATE: 25/5/2012                  TIME: 11:50:24
+MRC:                                AAACC123456
+-----------------------------------------------
+                THANK YOU                      
+        WE APPRECIATE YOUR BUSINESS         

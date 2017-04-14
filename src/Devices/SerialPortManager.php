@@ -23,10 +23,10 @@ class SerialPortManager implements SerialPortInterface{
     ser_open($port, 9600, 8, "None", 1, "None");
 
     // Clears input and/or output buffers.
-    ser_flush(true,true);
+    $this->flush();
 
     //Check if the port is open 
-    return ser_isopen();
+    return $this->isopen();
   }
 
   /**

@@ -1,11 +1,21 @@
 <?php 
 
-if (!function_exists('dd')) {
-	function dd($string){
-		die(var_dump($string));
-	}
-}
+if (! function_exists('dd')) {
+    /**
+     * Dump the passed variables and end the script.
+     *
+     * @param  mixed
+     * @return void
+     */
+    function dd()
+    {
+        array_map(function ($x) {
+            var_dump($x);
+        }, func_get_args());
 
+        die(1);
+    }
+}
 
 if (!function_exists('strContains')) {
 	function strContains($string,$substr){
