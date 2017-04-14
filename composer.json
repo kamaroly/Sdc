@@ -1,7 +1,7 @@
 {
     "name": "kamaro/sdc",
     "type": "library",
-    "description": ":package_description",
+    "description": "A package to interact with Sales Data Controllers (SDC) for Rwanda Revenue Authority",
     "keywords": [
         "kamaro",
         "sdc"

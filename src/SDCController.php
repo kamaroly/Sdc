@@ -276,7 +276,6 @@ Class SDCController {
         $data['INTERNAL_DATA']      = implode('-', str_split($cleanResponse[6],4));
         $data['RECEIPT_SIGNATURE']  = implode('-', str_split($cleanResponse[5],4));   
 
-        var_dump($data);
         return $data;
       }
       
@@ -381,7 +380,7 @@ Class SDCController {
             if (!empty($data)){
                 $request = $sequence . " " . strtoupper($command) . " " . $hexData . " 05";
             }
-            // dd($request);
+
             // Get the length of the byte hex to be sent
             $commandLength = $this->getLength($request);
               
