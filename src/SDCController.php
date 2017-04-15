@@ -1,6 +1,7 @@
 <?php
 namespace Kamaro\Sdc;
 
+use Exception;
 use  Kamaro\Sdc\Devices\SerialPortManager;
 
 /**
@@ -55,6 +56,8 @@ Class SDCController {
       $this->device = new SerialPortManager();
 
      $this->device->open($port);
+
+     $this->isSdcConnected();
    }
 
    /**
@@ -62,6 +65,7 @@ Class SDCController {
     * @return string
     */
    public function getID(){
+
       // Hex for requesting signature
       // command = "01 24 20 E5 05 30 31 32 3E 03";
         $string_dig = $this->getSdcRequest("", "E5", "20");
@@ -74,7 +78,7 @@ Class SDCController {
          $this->device->writeByte(" ".hexToByte($value_dig)."\r\n");
        }
 
-     usleep(1);
+     sleep(1);
      //Send request to the SDC asking the response 
      $string = $this->device->read();
 
@@ -86,7 +90,6 @@ Class SDCController {
    * @return array
    */
   public function getStatus(){
-       
        // Bytes for getting status
        // $string_dig= '01 24 20 E7 05 30 31 33 30 03';
        $string_dig = $this->getSdcRequest("", "E7", "24");
@@ -514,4 +517,14 @@ Class SDCController {
 
             return 'Unknown ERROR:'.$missage_string;
          }
+
+
+      private function isSdcConnected()
+      {
+          if (!$this->device->isOpen()) {
+            throw new Exception("Unable to connect to SDC", 1);
+          }
+
+          die();
+      }
 }
