@@ -23,9 +23,6 @@ vendor/
 - [Installation](#installation)
     - [Server Requirements](#server-requirements)
     - [Installing KAMARO SDC](#installing-sdc)
-    - [Configuration](#configuration)
-- [Web Server Configuration](#web-server-configuration)
-    - [Pretty URLs](#pretty-urls)
 
 <a name="installation"></a>
 ## Installation
