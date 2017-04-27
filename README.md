@@ -250,6 +250,9 @@ E         WE APPRECIATE YOUR BUSINESS
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 ## Testing
+Go to your the `index.php` from root directory of this package and update the port of the SDC then visit it from your browser.
+You should see a page like below 
+![alt text](https://raw.githubusercontent.com/kamaroly/Sdc/master/results.PNG)
 
 ``` bash
 $ composer test
