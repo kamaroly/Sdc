@@ -8,11 +8,12 @@ if (! function_exists('dd')) {
      * @return void
      */
     function dd()
-    {
+    {  
+    	echo '<pre>';
         array_map(function ($x) {
-            var_dump($x);
+	            var_dump($x);
         }, func_get_args());
-
+        echo '</pre>';
         die(1);
     }
 }
@@ -48,7 +49,7 @@ if (!function_exists('getPorts')) {
         $comm = trim($comm); 
         $comm = trim(str_replace('-',' ',$comm)); 
         $comm_list = explode(' ',$comm); 
-        return $comm_list ; 
+      return $comm_list ; 
     } 
 }
 

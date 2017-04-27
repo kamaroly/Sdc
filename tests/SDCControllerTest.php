@@ -11,7 +11,7 @@ class SDCControllerTest extends \PHPUnit_Framework_TestCase{
 
 	public function setUp()
 	{
-		$this->sdcController = new SDCController('COM5');
+		$this->sdcController = new SDCController('COM8');
 		
 		// $this->invoiceNumber = random_int(100,1000);
 		$this->setCommandString();
@@ -25,7 +25,7 @@ class SDCControllerTest extends \PHPUnit_Framework_TestCase{
 		$this->assertEquals($expected,$results);
 	}
 
-	/** @test if we can get ID */
+	/** @test if we can get ID *8
 	public function testGetSdcId(){
 		$sdcId = $this->sdcController->getID();
 		$this->assertTrue(strContains($sdcId,'SDC'));

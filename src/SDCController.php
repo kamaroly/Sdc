@@ -55,9 +55,10 @@ Class SDCController {
       error_reporting(E_ERROR);
       $this->device = new SerialPortManager();
 
-     $this->device->open($port);
+     $this->device->open($port,$licenseOwner,$licenseKey);
 
      $this->isSdcConnected();
+
    }
 
    /**
@@ -100,7 +101,7 @@ Class SDCController {
            $this->device->writeByte(" ".hexToByte($value_dig)."\r\n");
        }
       
-      usleep(1);
+      usleep(1000000);
       //Send request to the SDC asking the response 
       $str =  $this->device->read();
 
@@ -227,7 +228,7 @@ Class SDCController {
            $this->device->writeByte(" ".hexToByte($value_dig)."\r\n");
          }
       
-         usleep(600000);
+         usleep(800000);
          //Send request to the SDC asking the response 
          $response = $this->device->read();    
          $this->errorHandling($response);
@@ -260,7 +261,7 @@ Class SDCController {
            $this->device->writeByte(" ".hexToByte($value_dig)."\r\n");
          }
 
-         usleep(60000);
+         usleep(1000000);
          //Send request to the SDC asking the response 
          $response = $this->device->read();    
          $this->errorHandling($response);
@@ -523,8 +524,7 @@ Class SDCController {
       {
           if (!$this->device->isOpen()) {
             throw new Exception("Unable to connect to SDC", 1);
+            die();
           }
-
-          die();
       }
 }
