@@ -291,4 +291,3 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-code-quality]: https://scrutinizer-ci.com/g/Kamaro/Sdc
 [link-downloads]: https://packagist.org/packages/Kamaro/Sdc
 [link-author]: https://github.com/kamaroly
-[link-contributors]: ../../contributors
